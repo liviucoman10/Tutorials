@@ -7,17 +7,20 @@
 //============================================================================
 
 #include <iostream>
-#include "BMPAux.h"
-#include "ImageAux.h"
 
-using namespace std;
+/* include PPM Image header files */
+#include "PPMImage.h"
+#include "PPMAux.h"
+
 
 int main() {
-	cout << "Letter recognition program" << endl;
+	std::cout << "Letter recognition program\n";
 
-	/* create an unsigned char array to read image data */
-	BMPAux img_1("resources/test_img.bmp");
-	thresholdBMP(img_1, 200);
+	PPMImage *my_img = new PPMImage("resources/test_img.ppm");
+	writePPMToFile(my_img, "resources/test_img2.ppm");
+
+	delete my_img;
+	std::cout << "Reached end of program\n";
 
 	return 0;
 }
